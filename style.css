@@ -1,0 +1,12 @@
+h1{
+    float: right;
+    border: 9px dotted burlywood;
+}
+
+    
+
+img{
+    box-sizing: border-box;
+    float: inline-start;
+    border: 4px dashed rgb(212, 165, 103);
+}
