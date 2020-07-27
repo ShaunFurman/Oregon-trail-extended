@@ -19,6 +19,46 @@ class Traveler {
 
     }
 }
+// NEW WORK FOR EXTENDED:
+
+class Doctor extends Traveler {
+    constructor(name, food, isHealthy) {
+        super (name, food, isHealthy)//Food is not defined
+          
+    }
+    heal(traveler) {
+        if (traveler.isHealthy === false) {
+            traveler.isHealthy = true
+        }
+    }
+}
+class Hunter extends Traveler {
+    constructor(name, isHealthy) {
+        super (name, isHealthy)
+        this.food = 2
+    }
+    hunt() {
+        this.food += 5
+    }
+    eat(){
+        // this.food - 2
+        if (this.food >=2) {
+            this.food -= 2
+        }
+        else {
+            this.isHealthy = false
+            this.food = 0
+        }
+
+    }
+    giveFood(traveler, numOfFoodUnits){
+        if(this.food >= numOfFoodUnits){
+            this.food -=numOfFoodUnits
+            traveler.food += numOfFoodUnits
+        }
+    }
+}
+
 class Wagon {
     constructor(capacity) {
         this.capacity = capacity
@@ -43,8 +83,8 @@ class Wagon {
         // } else {
         //     return false
       
-        let q = this.passengers.some(traveler => this.passengers.food)
-        return true
+        let q = this.passengers.some(traveler => traveler.isHealthy === false)
+        return q
     }    //- Returns true if there is at least one unhealthy person in the wagon. Return false if not.
 
     totalFood() {
